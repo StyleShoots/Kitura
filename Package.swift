@@ -37,7 +37,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Kitura/LoggerAPI.git", from: "2.0.0"),
-        .package(url: "https://github.com/apple/swift-log.git", Version("0.0.0") ..< Version("2.0.0")),
+        .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
         kituraNetPackage,
         .package(url: "https://github.com/Kitura/Kitura-TemplateEngine.git", from: "2.0.200"),
         .package(url: "https://github.com/StyleShoots/KituraContracts.git", branch: "master"),
@@ -47,7 +47,7 @@ let package = Package(
         .target(
             name: "Kitura",
             dependencies: [
-                .product(name: "KituraNet", package: "KituraNet"),
+                .product(name: "KituraNet", package: "Kitura-net"),
                 .product(name: "KituraTemplateEngine", package: "Kitura-TemplateEngine"),
                 .product(name: "KituraContracts", package: "KituraContracts"),
                 .product(name: "TypeDecoder", package: "TypeDecoder"),
