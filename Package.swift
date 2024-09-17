@@ -46,11 +46,18 @@ let package = Package(
     targets: [
         .target(
             name: "Kitura",
-            dependencies: ["KituraNet", "KituraTemplateEngine", "KituraContracts", "TypeDecoder", "LoggerAPI", "Logging"]
+            dependencies: [
+                .product(name: "KituraNet", package: "Kitura-NIO"),
+                .product(name: "KituraTemplateEngine", package: "Kitura-TemplateEngine"),
+                .product(name: "KituraContracts", package: "KituraContracts"),
+                .product(name: "TypeDecoder", package: "TypeDecoder"),
+                .product(name: "LoggerAPI", package: "LoggerAPI"),
+                .product(name: "Logging", package: "swift-log")
+            ]
         ),
         .testTarget(
             name: "KituraTests",
-            dependencies: ["Kitura", "KituraContracts", "TypeDecoder", "LoggerAPI"]
-        )
-    ]
-)
+            dependencies: [
+                "Kitura",
+                .product(name: "KituraContracts", package: "KituraContracts"),
+                .
