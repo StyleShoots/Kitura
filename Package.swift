@@ -47,7 +47,7 @@ let package = Package(
         .target(
             name: "Kitura",
             dependencies: [
-                .product(name: "KituraNet", package: "Kitura-NIO"),
+                .product(name: "KituraNet", package: "KituraNet"),
                 .product(name: "KituraTemplateEngine", package: "Kitura-TemplateEngine"),
                 .product(name: "KituraContracts", package: "KituraContracts"),
                 .product(name: "TypeDecoder", package: "TypeDecoder"),
