@@ -60,4 +60,9 @@ let package = Package(
             dependencies: [
                 "Kitura",
                 .product(name: "KituraContracts", package: "KituraContracts"),
-                .
+                .product(name: "TypeDecoder", package: "TypeDecoder"),
+                .product(name: "LoggerAPI", package: "LoggerAPI")
+            ]
+        )
+    ]
+)
