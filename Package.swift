@@ -19,13 +19,13 @@
 import PackageDescription
 import Foundation
 
-var kituraNetPackage: Package.Dependency
+let kituraNetDependency: Package.Dependency = ProcessInfo.processInfo.environment["KITURA_NIO"] != nil
+    ? .package(url: "https://github.com/StyleShoots/Kitura-NIO.git", branch: "master")
+    : .package(url: "https://github.com/StyleShoots/Kitura-net.git", branch: "master")
 
-if ProcessInfo.processInfo.environment["KITURA_NIO"] != nil {
-    kituraNetPackage = .package(url: "https://github.com/StyleShoots/Kitura-NIO.git", branch: "master")
-} else {
-    kituraNetPackage = .package(url: "https://github.com/StyleShoots/Kitura-net.git", branch: "master")
-}
+let kituraNetProduct: Target.Dependency = ProcessInfo.processInfo.environment["KITURA_NIO"] != nil
+    ? .product(name: "KituraNet", package: "Kitura-NIO")
+    : .product(name: "KituraNet", package: "Kitura-net")
 
 let package = Package(
     name: "Kitura",
@@ -38,7 +38,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/Kitura/LoggerAPI.git", from: "2.0.0"),
         .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
-        kituraNetPackage,
+        kituraNetDependency,
         .package(url: "https://github.com/Kitura/Kitura-TemplateEngine.git", from: "2.0.200"),
         .package(url: "https://github.com/StyleShoots/KituraContracts.git", branch: "master"),
         .package(url: "https://github.com/Kitura/TypeDecoder.git", from: "2.0.0"),
@@ -47,7 +47,7 @@ let package = Package(
         .target(
             name: "Kitura",
             dependencies: [
-                .product(name: "KituraNet", package: "Kitura-net"),
+                kituraNetProduct,
                 .product(name: "KituraTemplateEngine", package: "Kitura-TemplateEngine"),
                 .product(name: "KituraContracts", package: "KituraContracts"),
                 .product(name: "TypeDecoder", package: "TypeDecoder"),
