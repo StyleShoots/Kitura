@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.10
 
 /**
  * Copyright IBM Corporation and the Kitura project authors 2016-2020
@@ -40,7 +40,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log.git", Version("0.0.0") ..< Version("2.0.0")),
         kituraNetPackage,
         .package(url: "https://github.com/Kitura/Kitura-TemplateEngine.git", from: "2.0.200"),
-        .package(url: "https://github.com/Kitura/KituraContracts.git", from: "1.2.200"),
+        .package(url: "https://github.com/StyleShoots/KituraContracts.git", branch: "master"),
         .package(url: "https://github.com/Kitura/TypeDecoder.git", from: "2.0.0"),
     ],
     targets: [
